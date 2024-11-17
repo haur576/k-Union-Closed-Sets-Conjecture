@@ -35,5 +35,5 @@ subject to Cc: c+cd+ac+bc+abc+acd+bcd+abcd <= m/3;
 subject to Cd: d+cd+ad+bd+bcd+acd+abd+abcd <= m/3;
 subject to CS1:ab+bc+bd+abc+abd+bcd+abcd >= 11;
 subject to CS2:abc+abd+bcd+abcd >= 7;
-subject to CS3:abc+abd+bcd+abcd >= 2;
+subject to CS3:abcd >= 2;
 end;
