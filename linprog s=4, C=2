@@ -1,0 +1,35 @@
+The linear optimization is written in GNU MathProg, a modelling language intended for describing linear mathematical programming models.
+
+a. Copy the linear program models to the `Model' tab in https://online-optimizer.appspot.com/
+b. Run `Solve Model'
+c. The bound of m is shown in `Optimal objective value' in `Model Overview'. See other tabs for more details.
+
+== 3-3. s=4, C=2 === Sol: m >= 114 ==
+# We have:
+# q_T >= 2 for any T = a, ad, bc, bcd, abc, abcd.
+# 12 + q_b+q_c <= m/3
+var a   >=2;
+var b   >=1;
+var c   >=1;
+var d   >=1;
+var ab  >=1;
+var ac  >=1;
+var ad  >=2;
+var bc  >=2;
+var bd  >=1;
+var cd  >=1;
+var abc >=2;
+var acd >=1;
+var abd >=1;
+var bcd >=2;
+var abcd>=2;
+var m   >=0;
+minimize y: m;
+
+subject to M: 2+a+b+c+d+ab+ac+ad+bc+bd+cd+abc+abd+acd+bcd+abcd >=m; #2 is for {} and {1}.
+subject to Ca: a+ab+ac+ad+abc+acd+abd+abcd <= m/3;
+subject to Cb: b+ab+bc+bd+abc+bcd+abd+abcd <= m/3;
+subject to Cc: c+cd+ac+bc+abc+acd+bcd+abcd <= m/3;
+subject to Cd: d+cd+ad+bd+bcd+acd+abd+abcd <= m/3;
+subject to Cx: 12 + b+c <= m/3;
+end;
