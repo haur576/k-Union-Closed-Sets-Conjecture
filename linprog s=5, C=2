@@ -1,0 +1,53 @@
+The linear optimization is written in GNU MathProg, a modelling language intended for describing linear mathematical programming models.
+
+a. Copy the linear program models to the `Model' tab in https://online-optimizer.appspot.com/
+b. Run `Solve Model'
+c. The bound of m is shown in `Optimal objective value' in `Model Overview'. See other tabs for more details.
+
+
+== 4-3. s=5 C=2 === Sol: m >= 122 ==
+# We have:
+# q_T >= 2 for any T = a, ad, ae, ade, bc, bcd, bce, bcde, abc, abcd, abce, abcde.
+# 26 + q_b + q_c <= m/3.
+var a      >=2;
+var b      >=1;
+var c      >=1;
+var d      >=1;
+var e      >=1;
+var ab     >=1;
+var ac     >=1;
+var ad     >=2;
+var ae     >=2;
+var bc     >=2;
+var bd     >=1;
+var cd     >=1;
+var be     >=1;
+var ce     >=1;
+var de     >=1;
+var abc    >=2;
+var abd    >=1;
+var abe    >=1;
+var acd    >=1;
+var ace    >=1;
+var ade    >=2;
+var bcd    >=2;
+var bce    >=2;
+var bde    >=1;
+var cde    >=1;
+var abcd   >=2;
+var abce   >=2;
+var abde   >=1;
+var acde   >=1;
+var bcde   >=2;
+var abcde  >=2;
+var m      >=0;
+minimize y: m ;
+
+subject to M: 2+a+b+c+d+e+ab+ac+ad+ae+bc+bd+be+cd+ce+de+abc+abd+abe+acd+ace+ade+bcd+bce+bde+cde+abcd+abce+abde+acde+bcde+abcde>=m; #2 is for {} and {1}.
+subject to Ca: a+ab+ac+ad+ae+abc+acd+abd+abcd+abe+ace+ade+abce+abde+acde+abcde <= m/3;
+subject to Cb: b+ab+bc+bd+be+abc+bcd+abd+abcd+abe+bce+bde+abce+abde+bcde+abcde <= m/3;
+subject to Cc: c+cd+ac+bc+ce+abc+acd+bcd+abcd+ace+bce+cde+abce+acde+bcde+abcde <= m/3;
+subject to Cd: d+cd+ad+bd+de+bcd+acd+abd+abcd+ade+bde+cde+abde+acde+bcde+abcde <= m/3;
+subject to Ce: e+ae+be+ce+de+abe+ace+ade+bce+bde+cde+abce+abde+acde+bcde+abcde <= m/3;
+subject to Cx: 26+b+c <= m/3;
+end;
