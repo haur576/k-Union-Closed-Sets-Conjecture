@@ -1,4 +1,4 @@
-# Linear Programming Calculations for ``Further analysis on the second frequency of union-closed set families''
+## Linear Programming Calculations for ``Further analysis on the second frequency of union-closed set families''
 
 This repository contains the Linear Program calculations, scripts, and results accompanying the paper:
 ``Further analysis on the second frequency of union-closed set families'' (arXiv link:)
